@@ -6,7 +6,7 @@ from PIL import Image
 import tensorflow as tf
 
 # Load pre-trained model
-model = tf.keras.models.load_model('v3_pred_cott_dis.h5')
+model = tf.keras.models.load_model('cotton.h5')
 
 # Define labels for prediction output
 labels = ['diseased','healthy']
