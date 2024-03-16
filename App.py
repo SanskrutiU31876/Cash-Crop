@@ -9,6 +9,18 @@ model = tf.keras.models.load_model('v3_pred_cott_dis.h5')
 # Define labels for prediction output
 labels = ['diseased', 'healthy']
 
+# Check the model summary to verify the input shape
+print(model.summary())
+
+# Iterate through layers and print convolutional layer configurations
+for layer in model.layers:
+    if isinstance(layer, tf.keras.layers.Conv2D):
+        print(f"Layer {layer.name}: Kernel size = {layer.kernel_size}, Input shape = {layer.input_shape}")
+
+# Print the shape of an example input image
+input_image_shape = (150, 150)  # Assuming this is the expected input shape
+print("Expected input image shape:", input_image_shape)
+
 # Define function to preprocess input image
 def preprocess_image(image):
     # Resize image
