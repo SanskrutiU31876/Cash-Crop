@@ -1,10 +1,14 @@
 import streamlit as st
-import numpy as np
 from PIL import Image
 import tensorflow as tf
+import numpy as np
 
 # Load pre-trained model
-model = tf.keras.models.load_model('cotton.h5')
+@st.cache(allow_output_mutation=True)
+def load_model():
+    return tf.keras.models.load_model('v3_pred_cott_dis.h5')
+
+model = load_model()
 
 # Define labels for prediction output
 labels = ['diseased', 'healthy']
@@ -16,7 +20,7 @@ def preprocess_image(image):
     # Convert image to numpy array
     image = np.array(image)
     # Scale pixel values to range [0, 1]
-    image = image / 255.0  # Changed from 150 to 255
+    image = image / 255.0
     # Expand dimensions to create batch of size 1
     image = np.expand_dims(image, axis=0)
     return image
