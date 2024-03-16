@@ -5,7 +5,7 @@ import tensorflow as tf
 import keras
 
 # Load TensorFlow SavedModel as an inference-only layer
-model = keras.layers.TFSMLayer('v3_pred_cott_dis.h5py', call_endpoint='serving_default')
+model = keras.layers.TFSMLayer('v3_pred_cott_dis.h5', call_endpoint='serving_default')
 
 # Define Streamlit app
 def main():
