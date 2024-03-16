@@ -9,9 +9,6 @@ model = tf.keras.models.load_model('v3_pred_cott_dis.h5')
 # Define labels for prediction output
 labels = ['diseased', 'healthy']
 
-# Check the model summary to verify the input shape
-print(model.summary())
-
 # Iterate through layers and print convolutional layer configurations
 for layer in model.layers:
     if isinstance(layer, tf.keras.layers.Conv2D):
@@ -28,7 +25,7 @@ def preprocess_image(image):
     # Convert image to numpy array
     image = np.array(image)
     # Scale pixel values to range [0, 1]
-    image = image / 255.0
+    image = image / 150.0
     # Expand dimensions to create batch of size 1
     image = np.expand_dims(image, axis=0)
     return image
